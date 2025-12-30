@@ -3,14 +3,14 @@ FROM maven:3.9.9-eclipse-temurin-21-jammy AS BUILD_IMAGE
 RUN git clone https://github.com/esraaghazal/dockerize-java-app.git
 
 # go to the project file and run mvn install
-RUN cd dockerize-java-app && cd vprofile-project && mvn install
+RUN cd dockerize-java-app && cd K8sDeployApp && mvn install
 
  
 FROM tomcat:10-jdk21
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # copy war file from maven container to start deploy
-COPY  --from=BUILD_IMAGE vprofile-project/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+COPY  --from=BUILD_IMAGE K8sDeployApp/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
