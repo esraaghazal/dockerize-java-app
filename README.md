@@ -1,3 +1,9 @@
+#Steps
+- Create 3 docker files for [tomcat(app),db(mysql),web(nginx)]
+- use memcache image and rabbitmq image in docker compose file
+- Build k8s cluster
+- Deploy the app on the cluster using services and deployments
+  
 # Prerequisites
 #
 - JDK 11 
